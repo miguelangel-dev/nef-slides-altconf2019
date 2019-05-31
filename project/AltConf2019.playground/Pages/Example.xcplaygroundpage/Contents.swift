@@ -7,8 +7,7 @@
  * Result
  
  */
-
-//: - Note: Bow provides us functional programming in Swift
+//: > __Bow__ provides us functional programming in Swift
 import Bow
 
 /*:
@@ -27,6 +26,7 @@ let either = _either.fold( { _ in "Default" },
  */
 let _result = Result<String, Error>.success("Result")
 let result = _result.map({ input in "Great \(input)" })
+
 /*:
  ### Result ~ Either
  

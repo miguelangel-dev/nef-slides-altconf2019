@@ -54,9 +54,9 @@
 						<section data-markdown data-transition="convex-in fade-out">
 							### 1. Headers
 ```Markdown
-# This is an h1 tag
-## This is an h2 tag
-### This is an h3 tag
+# This is an &lt;h1&gt; tag
+## This is an &lt;h2&gt; tag
+### This is an &lt;h3&gt; tag
 ```
 						</section>
 						<section data-markdown data-transition="convex-in fade-out">
@@ -141,8 +141,47 @@ https://github.com/bow-swift/nef
 						</section>
 				</section>
 
-				<section data-background="img/nef-card.png" data-background-opacity="1"></section>
+				<section data-background="#fff">
+						<section data-markdown>
+```swift
+import Bow
 
+let either = Either&lt;Error, String&gt;.right("Either")
+
+either.fold( { _ in "Default" },
+             { input in "Great \(input)!" } )
+// Great Either!
+```
+						</section>
+						<section data-markdown>
+
+```Swift
+//: > __Bow__ provides us functional programming in Swift
+import Bow
+
+/*:
+ ### Either
+
+ Sum type of types `A` and `B`. Represents a value of either
+ one of those types, but not both at the same time. Values of
+ type `A` are called *left*; values of type `B` are called
+ *right*.
+ 
+ */
+let either = Either&lt;Error, String&gt;.right("Either")
+
+either.fold( { _ in "Default" },
+             { input in "Great \(input)!" } )
+// Great Either!
+
+```
+						</section>
+						<section data-markdown data-transition="convex-in fade-out">
+							![Xcode Playground markup reference: example](assets/markup-playgrounds/playground-example-markdown.png)
+						</section>
+				</section>
+
+				<section data-background="img/nef-card.png" data-background-opacity="1"></section>
 
 				<section>
 					<section data-markdown data-background="#fff">
@@ -158,10 +197,37 @@ https://github.com/bow-swift/nef
 					</section>
 				</section>
 
+				<section>
+					<section data-markdown data-background="#fff">
+						## What can I do with **nef**?
+					</section>
 
-				<section data-markdown data-background="#fff">
-					## What can I do with **nef**?
+					<section data-background="#fff" data-transition="convex-in fade-out">
+						<img src="assets/nef/nef-works-1.png" alt="What can I do? - Verification" width="25%">
+						<div data-markdown>
+							**Eases** the creation of Swift Playgrounds with support for third party libraries.
+						</div>
+					</section>
+					<section data-background="#fff" data-transition="convex-in fade-out">
+						<img src="assets/nef/nef-works-2.png" alt="What can I do? - Compile" width="25%">
+						<div data-markdown>
+							**Compiles** Swift Playgrounds with support for third party libraries from the command line.
+						</div>
+					</section>
+					<section data-background="#fff" data-transition="convex-in fade-out">
+						<img src="assets/nef/nef-works-3.png" alt="What can I do? - Generation" width="25%">
+						<div data-markdown>
+							**Generates** Markdown project from Swift Playground.
+						</div>
+					</section>
+					<section data-background="#fff" data-transition="convex-in fade-out">
+						<img src="assets/nef/nef-works-4.png" alt="What can I do? - Integration" width="25%">
+						<div data-markdown>
+							**Integrates** Swift Playgrounds with Jekyll to create a microsite.
+						</div>
+					</section>
 				</section>
+
 
 				<section data-markdown data-background="#fff">
 					![Playgrounds](assets/playgrounds/playground-new-nef.png)
@@ -173,9 +239,11 @@ https://github.com/bow-swift/nef
 				</section>
 
 				<section data-markdown data-background="#fff">
-					### How __nef__ works?
+					## How __nef__ works?
 				</section>
 
+
+				<section data-background="img/nef-card.png" data-background-opacity="1"></section>
 
 			<footer>
 				@miguelangel_dl | #AltConfMadrid | @bow_swift
