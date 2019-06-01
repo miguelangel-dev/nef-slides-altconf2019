@@ -35,16 +35,6 @@
 					Senior Software Engineer at [47degrees](https://www.47deg.com/)
 				</section>
 
-				<section data-markdown>
-					## Outline
-
-					1. Mardown: quick review
-					2. What is __nef__?
-					3. What can I do with **nef**?
-					4. Markdown support
-					5. Jekyll Integration
-					6. Closing the circle: `CI`
-				</section>
 
 				<section data-background="#fff">
 						<section data-markdown data-background="#fff">
@@ -161,12 +151,10 @@ import Bow
 
 /*:
  ### Either
-
  Sum type of types `A` and `B`. Represents a value of either
- one of those types, but not both at the same time. Values of
- type `A` are called *left*; values of type `B` are called
- *right*.
- 
+ one of those types, but not both at the same time. Values
+ of type `A` are called *left*; values of type `B` are
+ called *right*.
  */
 let either = Either&lt;Error, String&gt;.right("Either")
 
@@ -205,45 +193,218 @@ either.fold( { _ in "Default" },
 					<section data-background="#fff" data-transition="convex-in fade-out">
 						<img src="assets/nef/nef-works-1.png" alt="What can I do? - Verification" width="25%">
 						<div data-markdown>
-							**Eases** the creation of Swift Playgrounds with support for third party libraries.
+							**Eases** the creation of Xcode Playgrounds with support for third party libraries.
 						</div>
 					</section>
 					<section data-background="#fff" data-transition="convex-in fade-out">
 						<img src="assets/nef/nef-works-2.png" alt="What can I do? - Compile" width="25%">
 						<div data-markdown>
-							**Compiles** Swift Playgrounds with support for third party libraries from the command line.
+							**Compiles** Xcode Playgrounds with support for third party libraries from the command line.
 						</div>
 					</section>
 					<section data-background="#fff" data-transition="convex-in fade-out">
 						<img src="assets/nef/nef-works-3.png" alt="What can I do? - Generation" width="25%">
 						<div data-markdown>
-							**Generates** Markdown project from Swift Playground.
+							**Generates** Markdown project from Xcode Playground.
 						</div>
 					</section>
 					<section data-background="#fff" data-transition="convex-in fade-out">
 						<img src="assets/nef/nef-works-4.png" alt="What can I do? - Integration" width="25%">
 						<div data-markdown>
-							**Integrates** Swift Playgrounds with Jekyll to create a microsite.
+							**Integrates** Xcode Playgrounds with Jekyll to create a microsite.
 						</div>
 					</section>
 				</section>
 
 
-				<section data-markdown data-background="#fff">
-					![Playgrounds](assets/playgrounds/playground-new-nef.png)
+				<section>
+					<section data-markdown data-background="#fff">
+						### **Eases** the creation of Xcode Playgrounds
+
+```bash
+⟶ nef playground --name AltConf2019 --podfile bow-podfile
+```
+				  </section>
+					<section data-markdown data-background="#fff">
+						### Podfile
+```Markdown
+target 'AltConf2019' do
+  platform :ios, 12.0
+  use_frameworks!
+
+  pod "Bow", "~> 0.4.0"
+end
+```
+					</section>
+					<section data-markdown data-background="#fff">
+```bash
+Installing Playground (AltConf2019)... ✅
+Set AltConf2019 target to iOS ✅
+Updating podfile (bow-podfile)... ✅
+Installing Pods ... ✅
+```
+					</section>
+					<section data-background="#fff" data-transition="convex-in fade-out">
+						<div data-markdown>
+							### Xcode Playground project
+						</div>
+						<img src="assets/nef/nef-install-folder.png" alt="nef install folder" width="50%">
+					</section>
+				</section>
+
+
+				<section>
+					<section data-markdown data-background="#fff">
+						## **Compiles** Xcode Playgrounds with support for third party libraries
+					</section>
+					<section data-markdown data-background="#fff" data-transition="convex-in fade-out">
+```bash
+⟶ nef compile .
+```
+					</section>
+					<section data-markdown data-background="#fff">
+```bash
+Installing Pods ... ✅
+Building AltConf2019.xcworkspace (AltConf2019) ... ✅
+Copy frameworks ✅
+Found 2 playgrounds
+   Compiling Markup Formatting Reference.xcplaygroundpage ... ✅
+   Compiling Example.xcplaygroundpage ... ✅
+```
+					</section>
+				</section>
+
+
+				<section>
+					<section data-markdown data-background="#fff">
+						## Markdown support
+					</section>
+					<section data-markdown data-background="#fff" data-transition="convex-in fade-out">
+						![Xcode Playground markup reference: example](assets/markup-playgrounds/playground-example-markdown.png)
+					</section>
+					<section data-markdown data-background="#fff" data-background="#fff">
+```bash
+⟶ nef markdown --project . --output ~/Desktop
+```
+					</section>
+					<section data-markdown data-background="#fff">
+						![nef: generates markdown from Xcode Playground project](assets/nef/nef-markdown.png)
+					</section>
+				</section>
+
+
+				<section>
+					<section data-markdown data-background="#fff">
+						## Jekyll Integration
+
+						Transform your plain text into static websites and blogs
+
+						![Jekyll](assets/jekyll/logo.png)
+					</section>
+					<section data-markdown data-background="#fff">
+						## **nef** commands
+						__nef__ provides some commands to modify the Markdown transformation process.
+
+```swift
+// nef:begin:header
+/*
+ &lt;Jekyll's header&gt;
+ */
+// nef:end
+```
+
+```swift
+// nef:begin:hidden
+import UIKit // This will be hidden in the Markdown file
+// nef:end
+```
+					</section>
+
+					<section data-markdown data-background="#fff">
+```bash
+⟶ nef jekyll --project project --output site
+```
+					</section>
+					<section data-background="#fff" data-transition="convex-in fade-out">
+						<div data-markdown>
+							#### Case of success
+						</div>
+						<img src="assets/nef/bow-microsite-sidebar.png" alt="Bow microsite: jekyll" width="75%">
+					</section>
+					<section data-markdown data-background="#fff" data-transition="convex-in fade-out">
+						# Demo
+					</section>
+				</section>
+
+
+				<section>
+					<section data-markdown data-background="#fff">
+						## Closing the circle: `CI` & `CD`
+					</section>
+					<section data-background="#fff">
+						<img src="assets/nef/nef-ci-cd.png" alt="nef install folder" width="100%">
+					</section>
 				</section>
 
 
 				<section data-markdown>
-					## One more thing...
+					## Outline
+
+					1. Mardown: quick review
+					2. What is __nef__?
+					3. What can I do with **nef**?
+					4. Markdown support
+					5. Jekyll Integration
+					6. Closing the circle: `CI` & `CD`
 				</section>
 
-				<section data-markdown data-background="#fff">
-					## How __nef__ works?
+
+				<section>
+					<section data-background="#fff">
+						<img src="assets/Octocat.png" alt="GitHub nef" width="50%">
+						<div data-markdown>
+							# bow-swift/nef
+						</div>
+					</section>
+
+					<section data-markdown data-transition="convex-in fade-out">
+						## One more thing...
+					</section>
+					<section data-markdown data-background="#fff">
+						## How __nef__ works?
+					</section>
+					<section data-markdown data-background="#fff">
+						### Parser
+
+						Creates a valid AST from Xcode Playground's page
+
+						1. __Lexical analyzer__ the nef's tokenizer (scanner)
+						2. __Syntax analyzer__ build the AST
+					</section>
+					<section data-markdown data-background="#fff">
+						### Render
+
+						1. __Markdown__
+						2. __Jekyll__
+						3. ...
+					</section>
+
+					<section data-background="#fff">
+						<div data-markdown>
+							#### AST
+						</div>
+						<img src="assets/nef/nef-ast.jpg" alt="nef AST" width="85%">
+					</section>
+
 				</section>
 
+				<section>
+					<section data-background="img/nef-card.png" data-background-opacity="1"></section>
+					<section data-markdown data-transition="convex-in fade-out" data-background="#fff">
+						![Questions: GitHub Pages](assets/questions/github-pages-settings.png)
+					</section>
+				</section>
 
-				<section data-background="img/nef-card.png" data-background-opacity="1"></section>
 
 			<footer>
 				@miguelangel_dl | #AltConfMadrid | @bow_swift
