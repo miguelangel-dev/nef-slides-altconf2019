@@ -1,6 +1,0 @@
-target 'AltConf2019' do
-  platform :ios, 12.0
-  use_frameworks!
-
-  pod "Bow", "~> 0.4.0"
-end
